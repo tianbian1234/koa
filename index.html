@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>test</title>
+        <style>
+            .button{
+                width: 100px;
+                height: 100px;
+                background: #00ff00;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="button"></div>
+        <script src="./jquery.min.js"></script>
+        <script>
+            $('.button').click(function(){
+                $.post('http://localhost:4000/api/products?name=gaoyantao', function(data){
+                    console.log(data);
+                })
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "koa-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "formidable": "^1.2.1",
+    "koa": "^2.5.1",
+    "koa-body": "^4.0.4",
+    "koa-bodyparser": "^4.2.0",
+    "koa-cors": "0.0.16",
+    "koa-formidable": "^1.1.0",
+    "koa-router": "^7.4.0",
+    "mysql2": "^1.5.3",
+    "node-uuid": "^1.4.8",
+    "sequelize": "^4.37.7"
+  },
+  "devDependencies": {
+    "koa-static": "^5.0.0"
+  }
+}
