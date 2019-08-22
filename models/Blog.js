@@ -7,5 +7,9 @@ module.exports = db.defineModel('blogs', {
     },
     type: db.STRING,
     title: db.STRING,
-    content: db.STRING
+    content: db.STRING,
+    img: db.STRING,
+    readcount: db.BIGINT,
+    readlike: db.BIGINT,
+    author: db.STRING
 })

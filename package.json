@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,9 +19,13 @@
     "koa-router": "^7.4.0",
     "mysql2": "^1.5.3",
     "node-uuid": "^1.4.8",
+    "nodemon": "^1.19.1",
     "sequelize": "^4.37.7"
   },
   "devDependencies": {
-    "koa-static": "^5.0.0"
+    "koa-static": "^5.0.0",
+    "koa-webpack-dev-middleware": "^2.0.2",
+    "koa-webpack-hot-middleware": "^1.0.3",
+    "webpack": "^4.35.0"
   }
 }

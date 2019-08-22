@@ -4,7 +4,7 @@ const APIError = require('../rest').APIError;
 let User = model.User;
 
 // 获取用户的信息
-var get_users =  async (ctx, next) => {
+var get_user =  async (ctx, next) => {
     var user = await User.findOne({
         where:{
             name: 'gaoyantao'
@@ -73,19 +73,17 @@ var delete_user = async (ctx, next) => {
             email: email
         }
     })
-
     ctx.rest({
         data: {
             code: 200,
             msg: '删除成功'
         }
     })
-
     await next();
 }
 
 module.exports = {
-    'POST /api/users': get_users,
+    'POST /api/users': get_user,
     'POST /api/add_user': add_user,
     'POST /api/delete_user': delete_user,
     'POST /api/fix_user': fix_user

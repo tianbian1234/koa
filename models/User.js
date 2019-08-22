@@ -7,5 +7,6 @@ module.exports = db.defineModel('users', {
     },
     passwd: db.STRING,
     name: db.STRING,
-    gender: db.BOOLEAN
+    auth: db.STRING,
+    gender: db.BOOLEAN,
 });

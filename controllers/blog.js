@@ -13,12 +13,7 @@ var add_blog = async (ctx, next) => {
     title = ctx.request.body.title,
     type = ctx.request.body.type,
     content = ctx.request.body.content;
-    let blog = Blog.create({
-        _id: _id,
-        type: type,
-        title: title,
-        content: content
-    })
+    let blog = Blog.create({...ctx.request.body})
 
     ctx.rest({
         data: {
@@ -43,17 +38,35 @@ var get_blogs = async (ctx, next) => {
 
     await next();
 }
+// 获取某种类型的所有的blog
+var get_blogs_by_type = async (ctx, next) => {
+    let type = ctx.request.body.type;
+    let blogs = [];
+    blogs = await Blog.findAll({
+        where: {
+          type: type
+        }
+    })
+
+    ctx.rest({
+        data: {
+            code: 200,
+            msg: blogs
+        }
+    })
+
+}
 // 获取单独的某一个blog
 var get_signal_blog = async (ctx, next) => {
-    let title = ctx.request.body.title,
-        _id = ctx.request.body._id;
+    let _id = ctx.request.body._id;
 
     let blog = await Blog.findOne({
         where:{
-            title: title,
             _id: _id
         }
     })
+
+    console.log(blog);
 
     ctx.rest({
         data:{
@@ -101,19 +114,22 @@ var add_img = async (ctx, next) => {
 
             fs.renameSync(file.path, "uploads/" + filename);
 
-            return resolve('上传成功')
+            return resolve(filename)
         })
     })
     var body = await p;
     ctx.rest({
         data:{
             code: 200,
-            msg: typeof body === 'undefined' ? '上传失败':'上传成功'
+            msg: {
+                content: typeof body === 'undefined' ? '上传失败':'上传成功',
+                url: 'http://localhost:4000/uploads/'+ body
+            }
         }
     })
     await next();
 }
-
+// 获取所有的图片
 var get_all_banner = async (ctx, next) => {
 
     let files = fs.readdirSync("uploads/").filter((f) => {
